@@ -1,5 +1,6 @@
 import { Heart, Menu, Search, ShoppingCart, User } from 'lucide-react';
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,10 +19,10 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6 items-center">
-            <a href="#" className="text-gray-700 hover:text-black">Home</a>
-            <a href="#" className="text-gray-700 hover:text-black">Contact</a>
-            <a href="#" className="text-gray-700 hover:text-black">About</a>
-            <a href="#" className="text-gray-700 hover:text-black">Sign Up</a>
+            <Link to="/" className="text-gray-700 hover:text-black">Home</Link>
+            <Link to="/" className="text-gray-700 hover:text-black">Contact</Link>
+            <Link to="/" className="text-gray-700 hover:text-black">About</Link>
+            <Link to="/signup" className="text-gray-700 hover:text-black">Sign Up</Link>
           </nav>
 
           {/* Search and Icons */}

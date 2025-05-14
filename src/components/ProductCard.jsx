@@ -3,8 +3,8 @@ import React from 'react'
 import RatingStars from './RatingStars';
 
 const ProductCard = ({ product, showDiscount }) => (
-  <div className="bg-white rounded-lg shadow-md overflow-hidden group">
-    <div className="relative bg-gray-100 p-4 flex justify-center items-center h-48">
+  <div className="bg-white overflow-hidden group">
+    <div className="relative rounded-md bg-gray-100 p-4 flex justify-center items-center h-48">
       <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
       {showDiscount && product.discount && (
         <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">

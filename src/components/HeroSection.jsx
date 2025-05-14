@@ -10,7 +10,7 @@ const HeroSection = () => {
       brand: "iPhone 14 Series",
       title: "Up to 10%",
       subtitle: "off Voucher",
-      image: "https://placehold.co/600x384/000000/FFFFFF?text=iPhone+14+Pro",
+      image: "/iphone14.jpg",
       bgColor: "bg-black",
       textColor: "text-white"
     },

@@ -1,10 +1,10 @@
 import ProductCard from "./ProductCard";
 
 const bestSellingProducts = [
-  { id: 1, name: 'The north coat', price: 260, oldPrice: 360, rating: 5, reviews: 65, image: 'https://placehold.co/270x250/f5f5f5/000000?text=Coat' },
-  { id: 2, name: 'Gucci duffle bag', price: 960, oldPrice: 1160, rating: 4.5, reviews: 65, image: 'https://placehold.co/270x250/f5f5f5/000000?text=Bag' },
-  { id: 3, name: 'RGB liquid CPU Cooler', price: 160, oldPrice: 170, rating: 4.5, reviews: 65, image: 'https://placehold.co/270x250/f5f5f5/000000?text=Cooler' },
-  { id: 4, name: 'Small BookSelf', price: 360, rating: 5, reviews: 65, image: 'https://placehold.co/270x250/f5f5f5/000000?text=BookShelf' },
+  { id: 1, name: 'The north coat', price: 260, oldPrice: 360, rating: 5, reviews: 65, image: '/coat.png' },
+  { id: 2, name: 'Gucci duffle bag', price: 960, oldPrice: 1160, rating: 4.5, reviews: 65, image: '/gucci.png' },
+  { id: 3, name: 'RGB liquid CPU Cooler', price: 160, oldPrice: 170, rating: 4.5, reviews: 65, image: '/cooler.png' },
+  { id: 4, name: 'Small BookSelf', price: 360, rating: 5, reviews: 65, image: '/shelf.png' },
 ];
 
 const BestSellingProducts = () => (

@@ -11,7 +11,7 @@ const flashSaleProducts = [
     discount: 40,
     rating: 5,
     reviews: 88,
-    image: "https://placehold.co/270x250/f5f5f5/b22222?text=Gamepad",
+    image: "/pad1.png",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const flashSaleProducts = [
     discount: 35,
     rating: 4,
     reviews: 75,
-    image: "https://placehold.co/270x250/f5f5f5/b22222?text=Keyboard",
+    image: "/keyboard.png",
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const flashSaleProducts = [
     discount: 30,
     rating: 5,
     reviews: 99,
-    image: "https://placehold.co/270x250/f5f5f5/b22222?text=Monitor",
+    image: "/monitor.png",
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const flashSaleProducts = [
     discount: 25,
     rating: 4.5,
     reviews: 99,
-    image: "https://placehold.co/270x250/f5f5f5/b22222?text=Chair",
+    image: "/chair.png",
   },
   {
     id: 5,

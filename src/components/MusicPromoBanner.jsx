@@ -16,7 +16,7 @@ const MusicPromoBanner = () => (
         <button className="bg-green-500 text-white px-8 py-3 rounded-md hover:bg-green-600 transition font-semibold">Buy Now!</button>
       </div>
       <div className="md:w-1/2 flex justify-center md:justify-end">
-        <img src="https://placehold.co/400x300/111111/FFFFFF?text=JBL+Speaker" alt="Music Product" className="max-w-xs md:max-w-md" />
+        <img src="/jbl2.png" alt="Music Product"/>
       </div>
     </div>
   </div>

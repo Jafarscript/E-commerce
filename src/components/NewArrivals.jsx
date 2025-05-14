@@ -9,8 +9,8 @@ const NewArrivals = () => (
     <h3 className="text-2xl md:text-3xl font-semibold text-black mb-8">New Arrival</h3>
     <div className="grid md:grid-cols-2 gap-6">
       {/* Large Left Item */}
-      <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[300px] md:min-h-[500px] overflow-hidden group" style={{ backgroundImage: `url('https://placehold.co/600x500/000000/111111?text=PS5')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-        <img src="https://placehold.co/400x350/000000/FFFFFF?text=PlayStation+5" alt="PlayStation 5" className="absolute inset-0 w-full h-full object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
+      <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[300px] md:min-h-[500px] overflow-hidden group" style={{ backgroundImage: `url('/ps5.png')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <img src="/ps5.png" alt="PlayStation 5" className="absolute inset-0 w-full h-full object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
         <div className="relative z-10">
           <h4 className="text-xl md:text-2xl font-semibold mb-2">PlayStation 5</h4>
           <p className="text-xs md:text-sm mb-3 opacity-80">Black and White version of the PS5 <br />coming out on sale.</p>
@@ -21,7 +21,7 @@ const NewArrivals = () => (
       <div className="grid gap-6">
         {/* Top Right Item */}
         <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[238px] md:min-h-[238px] overflow-hidden group" style={{ backgroundImage: `url('https://placehold.co/570x238/000000/111111?text=Woman+Collection')`, backgroundSize: 'contain', backgroundPosition: 'center right', backgroundRepeat: 'no-repeat' }}>
-          <img src="https://placehold.co/250x200/000000/FFFFFF?text=Woman+With+Hat" alt="Woman's Collection" className="absolute right-0 bottom-0 h-full w-auto object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
+          <img src="/woman2.png" alt="Woman's Collection" className="absolute right-0 bottom-0 h-full w-auto object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
           <div className="relative z-10">
             <h4 className="text-xl md:text-2xl font-semibold mb-2">Women’s Collections</h4>
             <p className="text-xs md:text-sm mb-3 opacity-80">Featured woman collections that <br />give you another vibe.</p>
@@ -30,8 +30,8 @@ const NewArrivals = () => (
         </div>
         <div className="grid sm:grid-cols-2 gap-6">
           {/* Bottom Left (of right column) Item */}
-          <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[238px] md:min-h-[238px] overflow-hidden group" style={{ backgroundImage: `url('https://placehold.co/270x238/000000/111111?text=Speakers')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-            <img src="https://placehold.co/180x150/000000/FFFFFF?text=Amazon+Speakers" alt="Speakers" className="absolute inset-0 w-full h-full object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
+          <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[238px] md:min-h-[238px] overflow-hidden group">
+            <img src="/speakers.png" alt="Speakers" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             <div className="relative z-10">
               <h4 className="text-xl font-semibold mb-1">Speakers</h4>
               <p className="text-xs opacity-80 mb-2">Amazon wireless speakers</p>
@@ -39,8 +39,8 @@ const NewArrivals = () => (
             </div>
           </div>
           {/* Bottom Right (of right column) Item */}
-          <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[238px] md:min-h-[238px] overflow-hidden group" style={{ backgroundImage: `url('https://placehold.co/270x238/000000/111111?text=Perfume')`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-            <img src="https://placehold.co/180x150/000000/FFFFFF?text=GUCCI+Perfume" alt="Perfume" className="absolute inset-0 w-full h-full object-contain opacity-70 group-hover:scale-105 transition-transform duration-300" />
+          <div className="relative bg-black text-white rounded-md p-6 flex flex-col justify-end min-h-[238px] md:min-h-[238px] overflow-hidden group">
+            <img src="/perfume.png" alt="Perfume" className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
             <div className="relative z-10">
               <h4 className="text-xl font-semibold mb-1">Perfume</h4>
               <p className="text-xs opacity-80 mb-2">GUCCI INTENSE OUD EDP</p>
