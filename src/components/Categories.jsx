@@ -1,4 +1,4 @@
-import { Clock, Facebook, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+import { Clock, Gamepad2, Headphones, Mail, MapPin, Phone } from 'lucide-react';
 import React from 'react'
 
 const categories = [
@@ -6,8 +6,8 @@ const categories = [
   { name: 'Computers', icon: <MapPin className="h-8 w-8 mx-auto" /> }, // Placeholder, replace with computer icon
   { name: 'SmartWatch', icon: <Clock className="h-8 w-8 mx-auto" /> },
   { name: 'Camera', icon: <Mail className="h-8 w-8 mx-auto" /> }, // Placeholder, replace with camera icon
-  { name: 'HeadPhones', icon: <Facebook className="h-8 w-8 mx-auto" /> }, // Placeholder
-  { name: 'Gaming', icon: <Twitter className="h-8 w-8 mx-auto" /> }, // Placeholder
+  { name: 'HeadPhones', icon: <Headphones className="h-8 w-8 mx-auto" /> }, // Placeholder
+  { name: 'Gaming', icon: <Gamepad2 className="h-8 w-8 mx-auto" /> }, // Placeholder
 ];
 
 const Categories = () => (

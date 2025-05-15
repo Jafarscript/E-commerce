@@ -1,0 +1,161 @@
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { allProductsData, getProductById } from "../data";
+import useWishlist from "../context/useWishlist";
+import RatingStars from "../components/RatingStars";
+import { ChevronLeft, ChevronRight, Heart, Minus, Plus, Truck } from "lucide-react";
+import ProductCard from "../components/ProductCard";
+
+
+const ProductDetailPage = () => {
+  const { productId } = useParams();
+  const product = getProductById(productId);
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const [selectedImage, setSelectedImage] = useState('');
+  const [quantity, setQuantity] = useState(1);
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || null);
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || null);
+
+  useEffect(() => {
+    if (product && product.images && product.images.length > 0) {
+      setSelectedImage(product.images[0]);
+    }
+    window.scrollTo(0, 0);
+  }, [product]);
+
+  if (!product) {
+    return <div className="container mx-auto px-4 py-12 text-center"><h2>Product not found!</h2><Link to="/" className="text-red-500 hover:underline">Go back to Home</Link></div>;
+  }
+
+  const handleWishlistToggle = () => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  const relatedItems = allProductsData.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+
+  return (
+    <div className="container mx-auto px-4 py-8 md:py-12 max-w-7xl">
+      {/* Breadcrumbs */}
+      <div className="text-sm text-gray-500 mb-6">
+        <Link to="/" className="hover:text-gray-700">Account</Link> / <Link to={`/category/${product.category.toLowerCase()}`} className="hover:text-gray-700">{product.category}</Link> / <span className="text-gray-900">{product.name}</span>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+        {/* Image Gallery */}
+        <div className="flex flex-col-reverse md:flex-row gap-4">
+          <div className="flex md:flex-col gap-3 md:gap-4 overflow-x-auto md:overflow-y-auto md:max-h-[500px] pb-2 md:pb-0 md:pr-2">
+            {product.images?.slice(1).map((img, index) => ( // Show thumbnails, skip first image if it's the main one
+              <img 
+                key={index} 
+                src={img} 
+                alt={`${product.name} thumbnail ${index + 1}`} 
+                className={`w-20 h-20 md:w-24 md:h-24 object-cover rounded-md cursor-pointer border-2 ${selectedImage === img ? 'border-red-500' : 'border-transparent hover:border-gray-300'}`}
+                onClick={() => setSelectedImage(img)}
+                onError={(e) => e.target.src='https://placehold.co/75x75/cccccc/969696?text=Error'}
+              />
+            ))}
+          </div>
+          <div className="flex-1 bg-gray-100 rounded-lg flex items-center justify-center p-4 min-h-[300px] md:min-h-[500px]">
+            <img src={selectedImage || null} alt={product.name} className="max-h-full max-w-full object-contain rounded-md" onError={(e) => e.target.src='https://placehold.co/500x400/cccccc/969696?text=Main+Error'}/>
+          </div>
+        </div>
+
+        {/* Product Details */}
+        <div>
+          <h1 className="text-2xl md:text-3xl font-semibold mb-3">{product.name}</h1>
+          <div className="flex items-center mb-4">
+            <RatingStars rating={product.rating} reviews={product.reviews} />
+            <span className="ml-3 text-sm text-gray-500">|</span>
+            <span className={`ml-3 text-sm ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {product.stock > 0 ? `${product.stock} In Stock` : 'Out of Stock'}
+            </span>
+          </div>
+          <p className="text-2xl md:text-3xl font-normal text-gray-900 mb-4">${product.price.toFixed(2)}</p>
+          <p className="text-gray-600 mb-6 text-sm leading-relaxed">{product.description}</p>
+          
+          <hr className="my-6"/>
+
+          {/* Colors */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="flex items-center mb-5">
+              <span className="text-gray-700 mr-3 text-sm">Colours:</span>
+              <div className="flex space-x-2">
+                {product.colors.map(color => (
+                  <button 
+                    key={color} 
+                    style={{ backgroundColor: color }} 
+                    className={`w-6 h-6 rounded-full border-2 ${selectedColor === color ? 'ring-2 ring-offset-1 ring-black border-white' : 'border-gray-300 hover:border-gray-500'}`}
+                    onClick={() => setSelectedColor(color)}
+                    aria-label={`Select color ${color}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Sizes */}
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="flex items-center mb-6">
+              <span className="text-gray-700 mr-4 text-sm">Size:</span>
+              <div className="flex space-x-2">
+                {product.sizes.map(size => (
+                  <button 
+                    key={size} 
+                    className={`px-3 py-1 border rounded text-xs font-medium ${selectedSize === size ? 'bg-red-500 text-white border-red-500' : 'border-gray-300 text-gray-700 hover:border-gray-500'}`}
+                    onClick={() => setSelectedSize(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Quantity and Actions */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-6">
+            <div className="flex items-center border border-gray-300 rounded h-11">
+              <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-l"><Minus size={16}/></button>
+              <input type="text" value={quantity} readOnly className="w-12 text-center border-l border-r border-gray-300 h-full focus:outline-none"/>
+              <button onClick={() => setQuantity(q => Math.min(product.stock, q + 1))} className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-r"><Plus size={16}/></button>
+            </div>
+            <button className="flex-grow bg-red-500 text-white px-8 py-2.5 rounded hover:bg-red-600 transition text-sm font-medium h-11">Buy Now</button>
+            <button onClick={handleWishlistToggle} className="p-2.5 border border-gray-300 rounded hover:border-gray-500 h-11">
+              <Heart className={`h-5 w-5 ${isInWishlist(product.id) ? 'text-red-500 fill-red-500' : 'text-gray-700'}`} />
+            </button>
+          </div>
+          
+          {/* Delivery Info */}
+          <div className="border border-gray-200 rounded">
+            <div className="p-4 border-b border-gray-200">
+              <h4 className="font-medium text-gray-800 mb-1 flex items-center"><Truck size={20} className="mr-2 text-gray-600"/>Free Delivery</h4>
+              <p className="text-xs text-gray-500 underline ml-7 cursor-pointer">Enter your postal code for Delivery Availability</p>
+            </div>
+            <div className="p-4">
+              <h4 className="font-medium text-gray-800 mb-1 flex items-center"><ChevronLeft size={20} className="mr-1 text-gray-600"/><ChevronRight size={20} className="mr-1 text-gray-600"/>Return Delivery</h4>
+              <p className="text-xs text-gray-500 ml-7">Free 30 Days Delivery Returns. <span className="underline cursor-pointer">Details</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Related Items */}
+      {relatedItems.length > 0 && (
+        <div className="mt-16 md:mt-24">
+          <div className="flex items-center mb-6">
+            <div className="w-5 h-10 bg-red-500 rounded mr-4"></div>
+            <h2 className="text-red-500 font-semibold text-sm">Related item</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {relatedItems.map(item => <ProductCard key={item.id} product={item} showDiscount={item.discount > 0} />)}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ProductDetailPage

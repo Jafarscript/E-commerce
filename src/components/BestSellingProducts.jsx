@@ -1,13 +1,10 @@
+import { allProductsData } from "../data";
 import ProductCard from "./ProductCard";
 
-const bestSellingProducts = [
-  { id: 1, name: 'The north coat', price: 260, oldPrice: 360, rating: 5, reviews: 65, image: '/coat.png' },
-  { id: 2, name: 'Gucci duffle bag', price: 960, oldPrice: 1160, rating: 4.5, reviews: 65, image: '/gucci.png' },
-  { id: 3, name: 'RGB liquid CPU Cooler', price: 160, oldPrice: 170, rating: 4.5, reviews: 65, image: '/cooler.png' },
-  { id: 4, name: 'Small BookSelf', price: 360, rating: 5, reviews: 65, image: '/shelf.png' },
-];
 
-const BestSellingProducts = () => (
+const BestSellingProducts = () => {
+  const bestSellers = allProductsData.sort((a,b) => (b.reviews * b.rating) - (a.reviews * a.rating)).slice(0,4); // Example logic
+  return (
   <div className="container mx-auto px-4 mt-12 md:mt-20 max-w-7xl">
     <div className="flex items-center mb-6">
       <div className="w-5 h-10 bg-red-500 rounded mr-4"></div>
@@ -18,10 +15,11 @@ const BestSellingProducts = () => (
       <button className="bg-red-500 text-white px-6 py-2 rounded-md text-sm hover:bg-red-600 transition">View All</button>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {bestSellingProducts.map(product => <ProductCard key={product.id} product={product} showDiscount={false} />)}
+      {bestSellers.map(product => <ProductCard key={product.id} product={product} showDiscount={false} />)}
     </div>
   </div>
-);
+  )
+};
 
 
 export default BestSellingProducts

@@ -1,59 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import { allProductsData } from "../data";
 
-// Placeholder data (replace with actual data from an API or state management)
-const flashSaleProducts = [
-  {
-    id: 1,
-    name: "HAVIT HV-G92 Gamepad",
-    price: 120,
-    oldPrice: 160,
-    discount: 40,
-    rating: 5,
-    reviews: 88,
-    image: "/pad1.png",
-  },
-  {
-    id: 2,
-    name: "AK-900 Wired Keyboard",
-    price: 960,
-    oldPrice: 1160,
-    discount: 35,
-    rating: 4,
-    reviews: 75,
-    image: "/keyboard.png",
-  },
-  {
-    id: 3,
-    name: "IPS LCD Gaming Monitor",
-    price: 370,
-    oldPrice: 400,
-    discount: 30,
-    rating: 5,
-    reviews: 99,
-    image: "/monitor.png",
-  },
-  {
-    id: 4,
-    name: "S-Series Comfort Chair",
-    price: 375,
-    oldPrice: 400,
-    discount: 25,
-    rating: 4.5,
-    reviews: 99,
-    image: "/chair.png",
-  },
-  {
-    id: 5,
-    name: "Another Product",
-    price: 500,
-    oldPrice: 600,
-    discount: 20,
-    rating: 4,
-    reviews: 50,
-    image: "https://placehold.co/270x250/f5f5f5/b22222?text=Product+5",
-  },
-];
+
 
 const FlashSales = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -90,6 +39,8 @@ const FlashSales = () => {
     }, 1000);
     return () => clearTimeout(timer);
   }, [timeLeft]);
+
+  const flashSaleProducts = allProductsData.filter(p => p.discount >= 25).slice(0,5); // Example: get first 5 highly discounted products
 
   return (
     <div className="container mx-auto px-4 mt-12 md:mt-20 max-w-7xl">
