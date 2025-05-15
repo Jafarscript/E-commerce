@@ -12,7 +12,7 @@ export const allProductsData = [
     description:
       "Playstation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
     images: [
-      "https://placehold.co/500x400/f5f5f5/b22222?text=Gamepad+View+1",
+      "/pad1.png",
       "https://placehold.co/75x75/f5f5f5/b22222?text=Thumb+1",
       "https://placehold.co/75x75/f5f5f5/b22222?text=Thumb+2",
       "https://placehold.co/75x75/f5f5f5/b22222?text=Thumb+3",

@@ -46,7 +46,7 @@ const Footer = () => (
           <h5 className="text-lg font-medium text-white mb-4">Download App</h5>
           <p className="text-xs text-gray-400 mb-2">Save $3 with App New User Only</p>
           <div className="flex space-x-2 mb-3">
-            <img src="https://placehold.co/80x80/333333/FFFFFF?text=QR" alt="QR Code" className="w-20 h-20 rounded" onError={(e) => e.target.src='https://placehold.co/80x80/cccccc/969696?text=QR+Error'}/>
+            <img src="/qr.jpg" alt="QR Code" className="w-20 h-20 border-white border-2" onError={(e) => e.target.src='https://placehold.co/80x80/cccccc/969696?text=QR+Error'}/>
             <div className="flex flex-col space-y-1 justify-center">
               <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" className="h-8 rounded" /></a>
               <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/2560px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" className="h-8 rounded" /></a>
